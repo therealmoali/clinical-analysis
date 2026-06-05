@@ -1,0 +1,34 @@
+{
+  "schema": "truthcert.light.v1",
+  "created_at": "2026-06-05T10:46:39+00:00",
+  "project": "benralizumab-hes",
+  "claim": "NATRON provides 2026 phase 3 randomized evidence that benralizumab reduces time to first HES flare versus placebo plus background therapy: HR 0.35 (95% CI 0.18 to 0.69).",
+  "limitations": [
+    "Single-study primary effect preview.",
+    "No pooled primary clinical meta-analysis claimed.",
+    "HESIL5R biomarker response RR is supporting evidence only."
+  ],
+  "artifacts": {
+    "index.html": "71b2fd094380699bfae937aac2ac22e8d0d6a656f363bcd43773bfba4788ac0e",
+    "rapidmeta.js": "ce6bb44cc427aeec72fe36260a4bd839bdd00428932ac16ba4d48cac8b04395a",
+    "rapidmeta.css": "1b8490f9e692259ce808776b005c2e18eac5d877ac635ff40853b57b36d7249b",
+    "style.meta": "2cd6da3d9fa963f1b68d4b6d7ae3cff891501ee4cd6ad1e6b97b93b018ec4000",
+    "E156.md": "c65b7ff2aaa70183bac5da0fcd8182fbfd8998d558c302540fb9abe573075c64",
+    "RELEASE_CHECKLIST.md": "d602a255cda54d952294c4625c6560cfc44ed36ef2decaa085772be49ad8fa01",
+    "README.md": "0e79cb5cfd4027d4c41f95cca8ca66a8aa936a564136efd03be40ea557527b22",
+    ".nojekyll": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
+    "docs/source-audit.md": "d2db5c24429ef167eef541e913fb5be02efb111f885cffa33fdf8cd38a9b1762",
+    "data/extracted/benralizumab_hes_effects.csv": "d3b289361ac24642476c82582f3ce3563e322e11fd1e11792aaccb58b11765db",
+    "data/processed/aact_benralizumab_hes_audit.json": "901c842a3b12540a079b5a0f71e09107352c0c50ca77d1644e3d931b61355c4e",
+    "tests/test_rapidmeta.js": "f294c2672187fa34f14bc112fab22ab7ec9fe4b383b5aceda90f4dba4b85e1cb",
+    "tests/test_ui.py": "b9206fcbc94ea9baf13296d76b3346e546658f0348c5af19d6165b21cd9cda51",
+    "scripts/query_aact_benralizumab_hes.py": "d278888b7aa8ca6bcdf99d4a8afe9c96b339c06edae70bd8db4c06dc1aa58b54",
+    "scripts/build_benralizumab_effects.py": "ded3b23d2e45da28b0893971dbf15dd57c9db52d26d0a2133bdf32940b98abb8",
+    "scripts/make_truthcert.py": "ddc4ddb45de2400cf870480e9a9e9233c5ad7a3e36749fb80c1496d7bc322fe7",
+    "scripts/verify_truthcert.py": "c758204f5d11f060ca36cfde80172777af8e27c7359c9ac2aeecf8e44899ee1f"
+  },
+  "signature": {
+    "type": "hmac-sha256",
+    "digest": "5f890b0b3654650dec816e25a926fa84e08ba0cf0a225224a8c92bcd9661910b"
+  }
+}

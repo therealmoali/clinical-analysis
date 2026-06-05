@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; base-uri 'none'; form-action 'none'">
+  <title>RapidMeta Benralizumab HES</title>
+  <meta name="description" content="RapidMeta-style fail-closed benralizumab hypereosinophilic syndrome review backed by AACT and open-access trial reports.">
+  <link rel="stylesheet" href="rapidmeta.css">
+</head>
+<body>
+  <header class="app-header">
+    <div>
+      <p class="eyebrow">RapidMeta / benralizumab-HES</p>
+      <h1>Benralizumab for hypereosinophilic syndrome</h1>
+      <p class="lede">A source-backed rapid review of randomized benralizumab evidence in FIP1L1::PDGFRA-negative HES, anchored by the 2026 NATRON phase 3 trial.</p>
+    </div>
+    <div class="status-panel" aria-label="Project status">
+      <span id="status-pill" class="pill warn">Draft</span>
+      <span id="study-count">0 studies</span>
+      <span id="analysis-state">No pooled estimate</span>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Dashboard sections">
+    <button class="tab active" type="button" data-tab="protocol">Protocol</button>
+    <button class="tab" type="button" data-tab="data">Data</button>
+    <button class="tab" type="button" data-tab="analysis">Analysis</button>
+    <button class="tab" type="button" data-tab="audit">Audit</button>
+  </nav>
+
+  <main>
+    <section id="protocol" class="panel active" aria-labelledby="protocol-title">
+      <div class="section-head">
+        <h2 id="protocol-title">Protocol Snapshot</h2>
+        <p>Mirrors the finerenone RapidMeta pattern: PICO first, explicit gates, source-backed identifiers, then synthesis.</p>
+      </div>
+      <div class="grid two">
+        <article class="box">
+          <h3>Review Question</h3>
+          <dl id="pico-list" class="kv-list"></dl>
+        </article>
+        <article class="box">
+          <h3>Analysis Plan</h3>
+          <dl id="analysis-plan" class="kv-list"></dl>
+        </article>
+      </div>
+      <article class="box full">
+        <h3>Release Gates</h3>
+        <ul id="release-gates" class="check-list"></ul>
+      </article>
+    </section>
+
+    <section id="data" class="panel" aria-labelledby="data-title">
+      <div class="section-head">
+        <h2 id="data-title">Effect Extraction Table</h2>
+        <p>The default row is the source-verified NATRON primary hazard ratio. Paste only comparable effects before pooling more than one row.</p>
+      </div>
+      <div class="workspace">
+        <label for="effect-csv">Pipe, comma, or tab-delimited effect data</label>
+        <textarea id="effect-csv" spellcheck="false" placeholder="study,effect,ci_lower,ci_upper&#10;NATRON,0.35,0.18,0.69"></textarea>
+        <div class="actions">
+          <button type="button" id="load-effects">Load Effects</button>
+          <button type="button" id="clear-effects" class="secondary">Clear</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Study</th>
+              <th>Effect</th>
+              <th>CI Lower</th>
+              <th>CI Upper</th>
+              <th>Weight</th>
+            </tr>
+          </thead>
+          <tbody id="effect-rows">
+            <tr><td colspan="5" class="empty">No extracted effects loaded.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="analysis" class="panel" aria-labelledby="analysis-title">
+      <div class="section-head">
+        <h2 id="analysis-title">Synthesis</h2>
+        <p>Fixed and DerSimonian-Laird random-effects estimates are computed from loaded comparable effects. With one eligible HR, the app reports a single-study effect preview.</p>
+      </div>
+      <div class="grid three">
+        <article class="metric">
+          <span class="metric-label">Studies</span>
+          <strong id="metric-k">0</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">Random Effect</span>
+          <strong id="metric-random">Not ready</strong>
+        </article>
+        <article class="metric">
+          <span class="metric-label">I2</span>
+          <strong id="metric-i2">Not ready</strong>
+        </article>
+      </div>
+      <div id="forest" class="forest" aria-label="Forest plot placeholder">
+        <div class="empty">Load at least one source-validated effect to render the forest plot.</div>
+      </div>
+      <article class="box full">
+        <h3>Model Details</h3>
+        <pre id="model-json" class="code-block">{ "status": "not_ready" }</pre>
+      </article>
+    </section>
+
+    <section id="audit" class="panel" aria-labelledby="audit-title">
+      <div class="section-head">
+        <h2 id="audit-title">Source Audit</h2>
+        <p>AACT snapshot provenance and fail-closed checks copied from the local RapidMeta config.</p>
+      </div>
+      <div class="grid two">
+        <article class="box">
+          <h3>Data Source</h3>
+          <dl id="source-list" class="kv-list"></dl>
+        </article>
+        <article class="box">
+          <h3>AACT Query Contract</h3>
+          <ul id="query-rules" class="check-list"></ul>
+        </article>
+      </div>
+      <article class="box full">
+        <h3>Readiness</h3>
+        <ul id="readiness-list" class="check-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Static app. No network calls. No placeholder pooled results.</span>
+    <span>Inspired by <code>therealmoali/rapidmeta-finerenone</code>.</span>
+  </footer>
+
+  <script src="rapidmeta.js" defer></script>
+</body>
+</html>

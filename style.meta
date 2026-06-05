@@ -1,0 +1,160 @@
+{
+  "schema": "rapidmeta.project.v1",
+  "status": "release_prepared_single_study_primary",
+  "project": {
+    "slug": "benralizumab-hes",
+    "title": "Benralizumab for hypereosinophilic syndrome",
+    "created": "2026-06-04",
+    "summary": "RapidMeta-style review of randomized benralizumab evidence in FIP1L1::PDGFRA-negative hypereosinophilic syndrome."
+  },
+  "data_sources": [
+    {
+      "id": "aact_20260604_flatfiles",
+      "type": "aact_flatfile_zip",
+      "path": "data/aact/20260604_export_ctgov.zip",
+      "exported": "2026-06-04",
+      "publisher": "Clinical Trials Transformation Initiative",
+      "citation": "Aggregate Analysis of ClinicalTrials.gov (AACT) Database. Clinical Trials Transformation Initiative (CTTI). Available at: https://aact.ctti-clinicaltrials.org/",
+      "integrity": {
+        "zip_crc_test": "passed",
+        "file_count": 49
+      }
+    }
+  ],
+  "review_question": {
+    "population": "FIP1L1::PDGFRA-negative hypereosinophilic syndrome",
+    "intervention": "Benralizumab 30 mg subcutaneous add-on therapy",
+    "comparator": "Placebo plus background therapy",
+    "outcome": "Time to first HES flare",
+    "study_design": "randomized controlled trials"
+  },
+  "eligibility": {
+    "open_access_only": true,
+    "trial_registry_required": true,
+    "allowed_sources": [
+      "ClinicalTrials.gov",
+      "open access full text"
+    ],
+    "exclude_if": [
+      "non-human study",
+      "not interventional",
+      "not randomized",
+      "no extractable effect estimate",
+      "source record cannot be verified"
+    ]
+  },
+  "aact_query_contract": {
+    "required_tables": [
+      "studies.txt",
+      "interventions.txt",
+      "conditions.txt",
+      "outcomes.txt",
+      "outcome_measurements.txt",
+      "outcome_counts.txt",
+      "reported_events.txt"
+    ],
+    "typed_identifier_fields": [
+      "nct_id",
+      "pmid",
+      "doi"
+    ],
+    "rules": [
+      "Lowercase intervention types before filtering.",
+      "Verify every referenced column exists before use.",
+      "Search by drug or intervention name rather than therapeutic class.",
+      "Validate NCT IDs, dates, PMIDs, DOIs, and effect data against source records before analysis."
+    ]
+  },
+  "analysis_plan": {
+    "effect_measure": "hazard_ratio",
+    "scale": "log",
+    "primary_model": "random_effects",
+    "tau2_estimator": "dersimonian_laird_for_dashboard_preview",
+    "small_sample_adjustment": "planned_hartung_knapp_when_k_ge_3",
+    "heterogeneity": [
+      "Q",
+      "I2",
+      "tau2"
+    ],
+    "sensitivity_checks": [
+      "fixed_effect",
+      "leave_one_out",
+      "source_identifier_audit",
+      "date_and_statistical_claim_audit"
+    ]
+  },
+  "extraction_fields": {
+    "study_level": [
+      "nct_id",
+      "trial_title",
+      "publication_year",
+      "pmid",
+      "doi",
+      "population",
+      "intervention",
+      "comparator",
+      "outcome_name",
+      "timepoint"
+    ],
+    "effect_level": [
+      "effect_measure",
+      "effect",
+      "ci_lower",
+      "ci_upper",
+      "standard_error",
+      "events_intervention",
+      "n_intervention",
+      "events_comparator",
+      "n_comparator"
+    ],
+    "audit_level": [
+      "source_url",
+      "oa_full_text_url",
+      "source_quote_location",
+      "extraction_notes",
+      "validated_by",
+      "validated_at"
+    ]
+  },
+  "studies": [
+    {
+      "study": "NATRON",
+      "nct_id": "NCT04191304",
+      "year": 2026,
+      "endpoint": "Time to first HES flare",
+      "effect_measure": "hazard_ratio",
+      "effect": 0.35,
+      "ci_lower": 0.18,
+      "ci_upper": 0.69,
+      "source_url": "https://www.nature.com/articles/s41591-026-04315-8",
+      "pooled_include": true
+    },
+    {
+      "study": "HESIL5R",
+      "nct_id": "NCT02130882",
+      "year": 2019,
+      "endpoint": "50% reduction in peripheral blood eosinophilia at 12 weeks",
+      "effect_measure": "risk_ratio",
+      "effect": 3.0,
+      "ci_lower": 1.14,
+      "ci_upper": 7.91,
+      "source_url": "data/aact/20260604_export_ctgov.zip",
+      "pooled_include": false,
+      "exclusion_from_primary_pool": "Biomarker response endpoint and RR effect measure are not comparable to NATRON time-to-flare HR."
+    }
+  ],
+  "outputs": {
+    "dashboard": "index.html",
+    "e156_paper": "E156.md",
+    "truthcert": "truthcert.json",
+    "extraction_table": "data/extracted/benralizumab_hes_effects.csv"
+  },
+  "release_gates": [
+    "No simulated or placeholder effect data.",
+    "All identifiers and dates validated against source records.",
+    "All important numeric claims trace to extracted data and reproducible code.",
+    "Dashboard and manuscript agree on study count, effect estimate, confidence interval, and conclusion.",
+    "Sentinel scan passes before push.",
+    "Overmind pass required before submission-ready status."
+  ]
+}
